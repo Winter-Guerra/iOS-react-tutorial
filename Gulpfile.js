@@ -7,10 +7,10 @@ var rename = require('gulp-rename');
 var config = {
   watchers: {
     index: '*.coffee',
-    files: 'app/**/*.coffee'
+    files: 'src/**/*.coffee'
   },
   index: {src: 'index.ios.coffee', dist: './'},
-  files: {src: 'app/**/*.coffee', dist: './app/dist'}
+  files: {src: 'src/**/*.coffee', dist: './dist'}
 }
 
 gulp.task('build', function() {

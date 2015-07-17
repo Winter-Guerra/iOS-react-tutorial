@@ -23,4 +23,14 @@
   # Install react native
   npm install -g react-native-cli
 
-  # 
+  npm install
+
+  npm install -g coffee-react-transform
+
+  # open ReactNativeCoffee.xcodeproj
+
+  # Click in 'Build'
+
+  gulp
+
+  npm start

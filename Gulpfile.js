@@ -15,7 +15,7 @@ var config = {
 
 gulp.task('build', function() {
   var options = {
-    continueOnError: false, // default = false, true means don't emit error event 
+    continueOnError: false, // default = false, true means don't emit error event
     pipeStdout: true
   };
 
@@ -30,7 +30,7 @@ gulp.task('build', function() {
 
 gulp.task('cjsx', ['build'], function() {
   var options = {
-    continueOnError: false, // default = false, true means don't emit error event 
+    continueOnError: false, // default = false, true means don't emit error event
   	pipeStdout: true
   };
 

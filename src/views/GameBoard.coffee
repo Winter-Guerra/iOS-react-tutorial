@@ -3,6 +3,7 @@ React = require 'react-native'
 
 SquareObject = require('./SquareObject')
 TouchableSquareObject = require('./TouchableSquareObject')
+RespawningSquareObject = require('./RespawningSquareObject')
 
 # Let's define how the gameboard works
 class GameBoard extends React.Component
@@ -39,6 +40,9 @@ class GameBoard extends React.Component
 
         {# This is a touchable box}
         <TouchableSquareObject color='orange'/>
+
+        {# This is an object that will respawn when touched}
+        <RespawningSquareObject color='green'/>
       </View>
     )
 

@@ -1,4 +1,4 @@
-var React, SquareObject, StyleSheet, TouchableHighlight, TouchableSquareObject, View, styles,
+var React, SquareObject, StyleSheet, TouchableHighlight, TouchableSquareObject, View,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -17,9 +17,6 @@ TouchableSquareObject = (function(superClass) {
   }
 
   TouchableSquareObject.prototype.render = function() {
-    if (this.state.destroyed) {
-      console.log('Destroyed!');
-    }
     return React.createElement(TouchableHighlight, {
       "onPress": ((function(_this) {
         return function() {
@@ -39,11 +36,5 @@ TouchableSquareObject = (function(superClass) {
   return TouchableSquareObject;
 
 })(SquareObject);
-
-styles = StyleSheet.create({
-  destroyed: {
-    color: 'black'
-  }
-});
 
 module.exports = TouchableSquareObject;

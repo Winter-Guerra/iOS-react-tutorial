@@ -1,4 +1,4 @@
-var GameBoard, React, SquareObject, StyleSheet, Text, TouchableSquareObject, View, styles,
+var GameBoard, React, RespawningSquareObject, SquareObject, StyleSheet, Text, TouchableSquareObject, View, styles,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -9,6 +9,8 @@ StyleSheet = React.StyleSheet, Text = React.Text, View = React.View;
 SquareObject = require('./SquareObject');
 
 TouchableSquareObject = require('./TouchableSquareObject');
+
+RespawningSquareObject = require('./RespawningSquareObject');
 
 GameBoard = (function(superClass) {
   extend(GameBoard, superClass);
@@ -32,6 +34,8 @@ GameBoard = (function(superClass) {
       "color": 'yellow'
     }), React.createElement(TouchableSquareObject, {
       "color": 'orange'
+    }), React.createElement(RespawningSquareObject, {
+      "color": 'green'
     }));
   };
 

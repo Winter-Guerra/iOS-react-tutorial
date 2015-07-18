@@ -13,10 +13,7 @@ class TouchableSquareObject extends SquareObject
     @state.destroyed = false
 
   render: () ->
-
     # Check if the object is destroyed
-    if @state.destroyed
-      console.log 'Destroyed!'
 
     return (
 
@@ -34,11 +31,5 @@ class TouchableSquareObject extends SquareObject
       destroyed: true
       color: 'black'
       })
-
-
-# This holds the style variations for when the square gets destroyed
-styles = StyleSheet.create
-  destroyed:
-    color: 'black'
 
 module.exports = TouchableSquareObject

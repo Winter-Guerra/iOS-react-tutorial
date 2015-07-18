@@ -8,7 +8,8 @@ store = require('../GameBoardStore')
 SquareObject = require('./SquareObject')
 TouchableSquareObject = require('./TouchableSquareObject')
 RespawningSquareObject = require('./RespawningSquareObject')
-# ScoreDisplay = require('./ScoreDisplay')
+ScoredSquareObject = require('./ScoredSquareObject')
+
 
 # Let's define how the gameboard works
 GameBoard = React.createClass
@@ -38,8 +39,8 @@ GameBoard = React.createClass
         {# <TouchableSquareObject color='orange'/>}
 
         {# This is an object that will respawn when touched}
-        <RespawningSquareObject color='green'/>
-        <RespawningSquareObject color='red'/>
+        <ScoredSquareObject color='green'/>
+        <ScoredSquareObject color='red'/>
       </View>
     )
 

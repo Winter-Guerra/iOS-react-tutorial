@@ -1,6 +1,5 @@
 React = require 'react-native'
 { StyleSheet, TouchableHighlight, View } = React
-{wait, repeat, doAndRepeat, waitUntil} = require 'wait'
 Dimensions = require('Dimensions')
 
 TouchableSquareObject = require('./TouchableSquareObject')

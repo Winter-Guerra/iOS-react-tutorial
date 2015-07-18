@@ -3,8 +3,6 @@ React = require 'react-native'
 
 SquareObject = require('./SquareObject')
 
-actions = require('../GameBoardActions')
-
 # This defines how to instantiate a square on the screen
 class TouchableSquareObject extends SquareObject
 
@@ -12,10 +10,7 @@ class TouchableSquareObject extends SquareObject
     super(properties)
 
   render: () ->
-    # Check if the object is destroyed
-
     return (
-
       {# Make the square touchable}
       <TouchableHighlight onPress={() => @handleTouch()}>
         { # get the rendered object for a normal square object via our parent class.
@@ -29,8 +24,5 @@ class TouchableSquareObject extends SquareObject
     @setState({
       color: 'black'
       })
-
-    # Tell the action dispatcher that a click event has been made
-    actions.squareClick(@props.color)
 
 module.exports = TouchableSquareObject

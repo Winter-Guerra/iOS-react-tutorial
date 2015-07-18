@@ -41,13 +41,17 @@ RespawningSquareObject = (function(superClass) {
     }, RespawningSquareObject.__super__.render.call(this));
   };
 
-  RespawningSquareObject.prototype.handleTouch = function() {
-    RespawningSquareObject.__super__.handleTouch.call(this);
+  RespawningSquareObject.prototype.setNewRandomLocation = function() {
     return this.setState({
       x: getRandomNumberWithRange(screenWidth),
       y: getRandomNumberWithRange(screenHeight),
       color: this.props.color
     });
+  };
+
+  RespawningSquareObject.prototype.handleTouch = function() {
+    RespawningSquareObject.__super__.handleTouch.call(this);
+    return this.setNewRandomLocation();
   };
 
   return RespawningSquareObject;

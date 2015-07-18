@@ -1,6 +1,7 @@
 React = require 'react-native'
 { StyleSheet, View } = React
-{wait, repeat, doAndRepeat, waitUntil} = require 'wait'
+# {wait, repeat, doAndRepeat, waitUntil} = require 'wait'
+# tweenState = require('react-tween-state')
 
 RespawningSquareObject = require('./RespawningSquareObject')
 
@@ -11,10 +12,17 @@ class ScoredSquareObject extends RespawningSquareObject
   constructor: (properties) ->
     super(properties)
 
-    # Let us slowly making the square vanish via animated fading
-    # console.log Animated
-    # @state.opacity = new Animated.Value(0)
-    # @state.animation = undefined
+    # Let us put a time to live timer on the blocks
+    # console.log wait
+    @setTimer()
+
+  setTimer: () ->
+
+    selfDestruct = () =>
+      actions.squareExpired(@props.color)
+      @setNewRandomLocation()
+
+    @state.timer = setInterval( selfDestruct, 5000)
 
   render: () ->
 
@@ -29,7 +37,9 @@ class ScoredSquareObject extends RespawningSquareObject
     # Tell the scoreboard that a click event has been made
     actions.squareClick(@props.color)
 
-    # Stop the fading animation
-    # @state.animation.stop()
+    # restart the timer
+    clearInterval(@state.timer)
+    @setTimer()
+
 
 module.exports = ScoredSquareObject

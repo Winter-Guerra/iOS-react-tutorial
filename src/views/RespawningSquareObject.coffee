@@ -34,9 +34,7 @@ class RespawningSquareObject extends TouchableSquareObject
       </View>
     )
 
-  # Extend the parent class's destructor function to also respawn the object somewhere else
-  handleTouch: () ->
-    super()
+  setNewRandomLocation: () ->
 
     # Respawn the object immediately
     @setState({
@@ -45,6 +43,11 @@ class RespawningSquareObject extends TouchableSquareObject
         color: @props.color
       })
 
-    # console.log @state
+  # Extend the parent class's destructor function to also respawn the object somewhere else
+  handleTouch: () ->
+    super()
 
+    # Respawn the object immediately
+    @setNewRandomLocation()
+    
 module.exports = RespawningSquareObject

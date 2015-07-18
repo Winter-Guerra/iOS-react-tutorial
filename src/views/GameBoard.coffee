@@ -41,6 +41,8 @@ GameBoard = React.createClass
         {# This is an object that will respawn when touched}
         <ScoredSquareObject color='green'/>
         <ScoredSquareObject color='red'/>
+        <ScoredSquareObject color='green'/>
+        <ScoredSquareObject color='red'/>
       </View>
     )
 

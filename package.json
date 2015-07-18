@@ -17,6 +17,7 @@
     "gulp-rename": "^1.2.0",
     "gulp-util": "^3.0.4",
     "react": "^0.13.3",
+    "react-motion": "^0.1.0",
     "reflux": "^0.2.9",
     "wait": "^0.1.0"
   }

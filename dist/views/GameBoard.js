@@ -33,6 +33,10 @@ GameBoard = React.createClass({
       "color": 'green'
     }), React.createElement(ScoredSquareObject, {
       "color": 'red'
+    }), React.createElement(ScoredSquareObject, {
+      "color": 'green'
+    }), React.createElement(ScoredSquareObject, {
+      "color": 'red'
     }));
   }
 });

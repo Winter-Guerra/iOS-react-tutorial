@@ -3,6 +3,7 @@ var gutil  = require('gulp-util');
 var coffee = require('gulp-coffee');
 var exec   = require('gulp-exec');
 var rename = require('gulp-rename');
+var del = require('del');
 
 var config = {
   watchers: {
@@ -13,7 +14,11 @@ var config = {
   files: {src: 'src/**/*.coffee', dist: './dist'}
 }
 
-gulp.task('build', function() {
+gulp.task('clean', function(cb) {
+  del([ './dist/**/*'  ], cb);
+})
+
+gulp.task('build', ['clean'], function() {
   var options = {
     continueOnError: false, // default = false, true means don't emit error event
     pipeStdout: true

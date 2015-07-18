@@ -1,10 +1,9 @@
 React = require 'react-native'
 
-MyCustomView = require './views/MyCustomView'
+GameBoard = require './views/GameBoard'
 
 App = React.createClass
   render: ->
-    <MyCustomView myCustomProp={'!'}>
-    </MyCustomView>
+    return(<GameBoard/>)
 
 module.exports = App

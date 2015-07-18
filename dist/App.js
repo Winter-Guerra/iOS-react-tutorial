@@ -1,14 +1,12 @@
-var App, MyCustomView, React;
+var App, GameBoard, React;
 
 React = require('react-native');
 
-MyCustomView = require('./views/MyCustomView');
+GameBoard = require('./views/GameBoard');
 
 App = React.createClass({
   render: function() {
-    return React.createElement(MyCustomView, {
-      "myCustomProp": '!'
-    });
+    return React.createElement(GameBoard, null);
   }
 });
 

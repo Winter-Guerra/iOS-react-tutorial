@@ -1,17 +1,19 @@
-var MyCustomView, React, StyleSheet, Text, View, styles;
+var GameBoard, React, SquareObject, StyleSheet, Text, View, styles;
 
 React = require('react-native');
 
 StyleSheet = React.StyleSheet, Text = React.Text, View = React.View;
 
-MyCustomView = React.createClass({
+SquareObject = require('./SquareObject');
+
+GameBoard = React.createClass({
   render: function() {
     return React.createElement(View, {
       "style": styles.container
     }, React.createElement(Text, {
       "style": styles.header
-    }, "Make a square!"), React.createElement(View, {
-      "style": styles.square
+    }, "Make a square!"), React.createElement(SquareObject, {
+      "color": 'yellow'
     }));
   }
 });
@@ -28,12 +30,7 @@ styles = StyleSheet.create({
     fontSize: 20,
     color: '#FFFFFF',
     margin: 15
-  },
-  square: {
-    width: 50,
-    height: 50,
-    backgroundColor: 'red'
   }
 });
 
-module.exports = MyCustomView;
+module.exports = GameBoard;

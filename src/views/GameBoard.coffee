@@ -4,6 +4,7 @@ React = require 'react-native'
 SquareObject = require('./SquareObject')
 TouchableSquareObject = require('./TouchableSquareObject')
 RespawningSquareObject = require('./RespawningSquareObject')
+ScoreDisplay = require('./ScoreDisplay')
 
 # Let's define how the gameboard works
 class GameBoard extends React.Component
@@ -13,26 +14,25 @@ class GameBoard extends React.Component
 
     # Fill the gameboard with destroyable squares.
     @state = {
-      numberOfActiveSquares: properties.numberOfActiveSquares,
-      # keysOfActiveSquareObjects: [0...properties.numberOfActiveSquares]
+      numberOfActiveSquares: properties.numberOfActiveSquares
     }
 
-    # Populate the game board with destroyable squares
-    @refillGameBoard()
 
   # This is run everytime the gameboard should change
   render: () ->
-
-    # Let's take the opportunity to update the gameboard
-    @pruneGameBoard()
-    @refillGameBoard()
 
     return (
       {# This is the background for the screen}
       <View style={styles.container}>
 
-        {# This is the header}
-        <Text style={styles.header}>Make a square!</Text>
+
+        {# Make the header}
+        <View style={styles.headerContainer}>
+          {# This is the title}
+          <Text style={styles.header}>Tap the squares!</Text>
+          {#This displays the current score}
+          <ScoreDisplay/>
+        </View>
 
         {# Insert code here}
         {# This is the box}
@@ -47,25 +47,19 @@ class GameBoard extends React.Component
     )
 
 
-  # This removes all dead square objects from our gameBoard
-  pruneGameBoard: () ->
-    return
-    # @state.listOfActiveSquareObjects = square for square in @state.listOfActiveSquareObjects if not square.isDestroyed()
-
-  # This adds new square objects to our game board to refill the slots left by the destroyed squares
-  refillGameBoard: () ->
-    return
-    # while len(@state.listOfActiveSquareObjects) < @state.numberOfActiveSquares
-    #   # Make a new square
-    #   @state.listOfActiveSquareObjects.push( TouchableSquareObject() )
-
-
 styles = StyleSheet.create
   container:
     flex: 1
     flexDirection: 'column'
     justifyContent: 'space-around' # Make the title be at the top
     alignItems: 'center'
+    backgroundColor: '#512DA8'
+
+  headerContainer:
+    flex: 1
+    flexDirection: 'row'
+    justifyContent: 'space-around' # Make the title be at the top
+    # alignItems: 'center'
     backgroundColor: '#512DA8'
 
   header:

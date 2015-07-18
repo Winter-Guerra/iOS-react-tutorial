@@ -38,21 +38,18 @@ RespawningSquareObject = (function(superClass) {
         bottom: this.state.y
       }
     });
-    console.log;
     return React.createElement(View, {
       "style": style.square
     }, RespawningSquareObject.__super__.render.call(this));
   };
 
-  RespawningSquareObject.prototype.destroyObject = function() {
-    RespawningSquareObject.__super__.destroyObject.call(this);
-    this.setState({
+  RespawningSquareObject.prototype.handleTouch = function() {
+    RespawningSquareObject.__super__.handleTouch.call(this);
+    return this.setState({
       x: getRandomNumberWithRange(screenWidth),
       y: getRandomNumberWithRange(screenHeight),
-      destroyed: false,
       color: this.props.color
     });
-    return console.log(this.state);
   };
 
   return RespawningSquareObject;

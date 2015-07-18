@@ -13,22 +13,20 @@ TouchableSquareObject = (function(superClass) {
 
   function TouchableSquareObject(properties) {
     TouchableSquareObject.__super__.constructor.call(this, properties);
-    this.state.destroyed = false;
   }
 
   TouchableSquareObject.prototype.render = function() {
     return React.createElement(TouchableHighlight, {
       "onPress": ((function(_this) {
         return function() {
-          return _this.destroyObject();
+          return _this.handleTouch();
         };
       })(this))
     }, TouchableSquareObject.__super__.render.call(this));
   };
 
-  TouchableSquareObject.prototype.destroyObject = function() {
+  TouchableSquareObject.prototype.handleTouch = function() {
     return this.setState({
-      destroyed: true,
       color: 'black'
     });
   };

@@ -1,4 +1,4 @@
-var GameBoard, React, RespawningSquareObject, SquareObject, StyleSheet, Text, TouchableSquareObject, View, styles,
+var GameBoard, React, RespawningSquareObject, ScoreDisplay, SquareObject, StyleSheet, Text, TouchableSquareObject, View, styles,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -12,6 +12,8 @@ TouchableSquareObject = require('./TouchableSquareObject');
 
 RespawningSquareObject = require('./RespawningSquareObject');
 
+ScoreDisplay = require('./ScoreDisplay');
+
 GameBoard = (function(superClass) {
   extend(GameBoard, superClass);
 
@@ -20,17 +22,16 @@ GameBoard = (function(superClass) {
     this.state = {
       numberOfActiveSquares: properties.numberOfActiveSquares
     };
-    this.refillGameBoard();
   }
 
   GameBoard.prototype.render = function() {
-    this.pruneGameBoard();
-    this.refillGameBoard();
     return React.createElement(View, {
       "style": styles.container
+    }, React.createElement(View, {
+      "style": styles.headerContainer
     }, React.createElement(Text, {
       "style": styles.header
-    }, "Make a square!"), React.createElement(SquareObject, {
+    }, "Tap the squares!"), React.createElement(ScoreDisplay, null)), React.createElement(SquareObject, {
       "color": 'yellow'
     }), React.createElement(TouchableSquareObject, {
       "color": 'orange'
@@ -38,10 +39,6 @@ GameBoard = (function(superClass) {
       "color": 'green'
     }));
   };
-
-  GameBoard.prototype.pruneGameBoard = function() {};
-
-  GameBoard.prototype.refillGameBoard = function() {};
 
   return GameBoard;
 
@@ -53,6 +50,12 @@ styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-around',
     alignItems: 'center',
+    backgroundColor: '#512DA8'
+  },
+  headerContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     backgroundColor: '#512DA8'
   },
   header: {

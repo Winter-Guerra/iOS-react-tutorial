@@ -1,4 +1,4 @@
-var GameBoard, React, Reflux, RespawningSquareObject, SquareObject, StyleSheet, Text, TouchableSquareObject, View, actions, store, styles;
+var GameBoard, React, Reflux, RespawningSquareObject, ScoredSquareObject, SquareObject, StyleSheet, Text, TouchableSquareObject, View, actions, store, styles;
 
 React = require('react-native');
 
@@ -16,6 +16,8 @@ TouchableSquareObject = require('./TouchableSquareObject');
 
 RespawningSquareObject = require('./RespawningSquareObject');
 
+ScoredSquareObject = require('./ScoredSquareObject');
+
 GameBoard = React.createClass({
   mixins: [Reflux.connect(store)],
   render: function() {
@@ -27,9 +29,9 @@ GameBoard = React.createClass({
       "style": styles.header
     }, "Tap the squares!"), React.createElement(Text, {
       "style": styles.score
-    }, this.state.score)), React.createElement(RespawningSquareObject, {
+    }, this.state.score)), React.createElement(ScoredSquareObject, {
       "color": 'green'
-    }), React.createElement(RespawningSquareObject, {
+    }), React.createElement(ScoredSquareObject, {
       "color": 'red'
     }));
   }

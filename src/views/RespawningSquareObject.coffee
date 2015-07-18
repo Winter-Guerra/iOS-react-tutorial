@@ -1,12 +1,15 @@
 React = require 'react-native'
 { StyleSheet, TouchableHighlight, View } = React
 {wait, repeat, doAndRepeat, waitUntil} = require 'wait'
-# Dimensions = require('Dimensions')
+Dimensions = require('Dimensions')
 
 TouchableSquareObject = require('./TouchableSquareObject')
 
 getRandomNumberWithRange = (maxValue) ->
   return Math.random() * maxValue
+
+screenWidth = Dimensions.get('window').width - 25
+screenHeight = Dimensions.get('window').height - 25
 
 class RespawningSquareObject extends TouchableSquareObject
 
@@ -14,8 +17,8 @@ class RespawningSquareObject extends TouchableSquareObject
     super(properties)
 
     # Spawn the square in a random location on the screen
-    @state.x = getRandomNumberWithRange(100)
-    @state.y = getRandomNumberWithRange(100)
+    @state.x = getRandomNumberWithRange(screenWidth)
+    @state.y = getRandomNumberWithRange(screenHeight)
 
   render: () ->
     style = StyleSheet.create
@@ -39,9 +42,12 @@ class RespawningSquareObject extends TouchableSquareObject
 
     # Respawn the object immediately
     @setState({
-        x: Math.random()*100.0
-        y: Math.random()*100.0
+        x: getRandomNumberWithRange(screenWidth)
+        y: getRandomNumberWithRange(screenHeight)
         destroyed: false
+        color: @props.color
       })
+
+    console.log @state
 
 module.exports = RespawningSquareObject

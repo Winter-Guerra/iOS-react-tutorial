@@ -1,4 +1,4 @@
-var React, SquareObject, StyleSheet, TouchableHighlight, TouchableSquareObject, View,
+var React, SquareObject, StyleSheet, TouchableHighlight, TouchableSquareObject, View, actions,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
 
@@ -7,6 +7,8 @@ React = require('react-native');
 StyleSheet = React.StyleSheet, TouchableHighlight = React.TouchableHighlight, View = React.View;
 
 SquareObject = require('./SquareObject');
+
+actions = require('../GameBoardActions');
 
 TouchableSquareObject = (function(superClass) {
   extend(TouchableSquareObject, superClass);
@@ -26,9 +28,10 @@ TouchableSquareObject = (function(superClass) {
   };
 
   TouchableSquareObject.prototype.handleTouch = function() {
-    return this.setState({
+    this.setState({
       color: 'black'
     });
+    return actions.squareClick(this.props.color);
   };
 
   return TouchableSquareObject;

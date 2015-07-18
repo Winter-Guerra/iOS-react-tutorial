@@ -3,6 +3,8 @@ React = require 'react-native'
 
 SquareObject = require('./SquareObject')
 
+actions = require('../GameBoardActions')
+
 # This defines how to instantiate a square on the screen
 class TouchableSquareObject extends SquareObject
 
@@ -27,5 +29,8 @@ class TouchableSquareObject extends SquareObject
     @setState({
       color: 'black'
       })
+
+    # Tell the action dispatcher that a click event has been made
+    actions.squareClick(@props.color)
 
 module.exports = TouchableSquareObject

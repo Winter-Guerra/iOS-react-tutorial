@@ -1,22 +1,19 @@
 React = require 'react-native'
 { StyleSheet, Text, View } = React
+Reflux = require('reflux')
+
+actions = require('../GameBoardActions')
+store = require('../GameBoardStore')
 
 SquareObject = require('./SquareObject')
 TouchableSquareObject = require('./TouchableSquareObject')
 RespawningSquareObject = require('./RespawningSquareObject')
-ScoreDisplay = require('./ScoreDisplay')
+# ScoreDisplay = require('./ScoreDisplay')
 
 # Let's define how the gameboard works
-class GameBoard extends React.Component
-
-  constructor: (properties) ->
-    super(properties)
-
-    # Fill the gameboard with destroyable squares.
-    @state = {
-      numberOfActiveSquares: properties.numberOfActiveSquares
-    }
-
+GameBoard = React.createClass
+  # Connect the data store via flux
+  mixins: [Reflux.connect(store)]
 
   # This is run everytime the gameboard should change
   render: () ->
@@ -25,24 +22,24 @@ class GameBoard extends React.Component
       {# This is the background for the screen}
       <View style={styles.container}>
 
-
         {# Make the header}
         <View style={styles.headerContainer}>
           {# This is the title}
           <Text style={styles.header}>Tap the squares!</Text>
           {#This displays the current score}
-          <ScoreDisplay/>
+          <Text style={styles.score}>{this.state.score}</Text>
         </View>
 
         {# Insert code here}
         {# This is the box}
-        <SquareObject color='yellow'/>
+        {# <SquareObject color='yellow'/> }
 
         {# This is a touchable box}
-        <TouchableSquareObject color='orange'/>
+        {# <TouchableSquareObject color='orange'/>}
 
         {# This is an object that will respawn when touched}
         <RespawningSquareObject color='green'/>
+        <RespawningSquareObject color='red'/>
       </View>
     )
 
@@ -67,7 +64,12 @@ styles = StyleSheet.create
     color: '#FFFFFF'
     margin: 15
 
-GameBoard.defaultProps = {numberOfActiveSquares: 1}
+  score:
+    fontSize: 20
+    color: '#FFFFFF'
+    margin: 15
+
+# GameBoard.defaultProps = {numberOfActiveSquares: 1}
 
 
 module.exports = GameBoard

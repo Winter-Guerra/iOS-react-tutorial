@@ -2,31 +2,39 @@ React = require 'react-native'
 { StyleSheet, Text, View } = React
 
 MyCustomView = React.createClass
-	render: ->
+  render: () ->
+
+    {# This is the background for the screen}
     <View style={styles.container}>
-      <Text style={styles.welcome}>
-        Hello world!
-        Welcome to React Native! :)
+
+      {# This is the header}
+      <Text style={styles.header}>
+        Make a square!
       </Text>
-      <Text style={styles.instructions}>
-        To get started, edit index.ios.coffee{'\n'}
-        Press Cmd+R to test{@props.myCustomProp}
-      </Text>
+
+      {# Insert code here}
+      {# This is the box}
+      <View style={styles.square}/>
     </View>
+
 
 styles = StyleSheet.create
   container:
     flex: 1
-    justifyContent: 'center'
+    flexDirection: 'column'
+    justifyContent: 'space-around' # Make the title be at the top
     alignItems: 'center'
     backgroundColor: '#512DA8'
-  welcome:
+
+  header:
     fontSize: 20
-    textAlign: 'center'
     color: '#FFFFFF'
-    margin: 10
-  instructions:
-    textAlign: 'center'
-    color: '#8BC34A'
+    margin: 15
+
+  square:
+    width: 50
+    height: 50
+    backgroundColor: 'red'
+
 
 module.exports = MyCustomView

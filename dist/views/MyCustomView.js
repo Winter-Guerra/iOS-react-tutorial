@@ -9,29 +9,30 @@ MyCustomView = React.createClass({
     return React.createElement(View, {
       "style": styles.container
     }, React.createElement(Text, {
-      "style": styles.welcome
-    }, "Hello world!\nWelcome to React Native! :)"), React.createElement(Text, {
-      "style": styles.instructions
-    }, "To get started, edit index.ios.coffee", '\n', "Press Cmd+R to test", this.props.myCustomProp));
+      "style": styles.header
+    }, "Make a square!"), React.createElement(View, {
+      "style": styles.square
+    }));
   }
 });
 
 styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: '#512DA8'
   },
-  welcome: {
+  header: {
     fontSize: 20,
-    textAlign: 'center',
     color: '#FFFFFF',
-    margin: 10
+    margin: 15
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#8BC34A'
+  square: {
+    width: 50,
+    height: 50,
+    backgroundColor: 'red'
   }
 });
 
